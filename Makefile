@@ -3,17 +3,14 @@ NASM=nasm
 
 CC_FLAGS=-Wall -Wextra -pedantic
 
-OBJS=main.o graphics.o input.o
+MAIN_OBJS=main.o input.o
+GRAPH_OBJS=graphics.o setvideo.o
+OBJS=$(MAIN_OBJS) $(GRAPH_OBJS)
 
-graphics.exe: $(OBJS)
-#	$(CC) $(CC_FLAGS) -o graphics.exe $(OBJS)
+graphics.exe: $(OBJS) deps
 	$(CC) -o graphics.exe $(OBJS)
 
-input.o: input.asm
-	$(NASM) -f coff -o input.o input.asm
-
 %.o: %.c
-#	$(CC) $(CC_FLAGS) -c -o $@ $<
 	$(CC) -c -o $@ $<
 	
 %.o: %.asm
@@ -21,5 +18,6 @@ input.o: input.asm
 	
 clean:
 	del *.o
+	del *.exe
 
-deps: graphics.h input.h
+deps: lib/graphics.h lib/input.h

@@ -1,22 +1,22 @@
-#include "graphics.h"
+#include "lib/graphics.h"
 
 extern byte *VGA;
 
-void setVideoMode(byte mode)
+/*void setVideoMode(byte mode)
 {
     union REGS regs;
     
     regs.h.ah = 0x00;
     regs.h.al = mode;
     int86(0x10, &regs, &regs);
-}
+}*/
 
 void plotPixel(int x, int y, byte colour)
 {
     VGA[y*SCREEN_WIDTH+x] = colour;
 }
 
-void drawSprite(sprite_t *s)
+/*void drawSprite(sprite_t *s)
 {
     int i, j;
     byte pixel;
@@ -28,6 +28,17 @@ void drawSprite(sprite_t *s)
                 plotPixel(s->x + j, s->y + i, pixel);
             }
         }
+    }
+}*/
+
+void drawSprite(sprite_t *s)
+{
+    int i, x, y;
+    for(i = 0; i < s->len; i++)
+    {
+        x = s->x + s->pixels[i].x;
+        y = s->y + s->pixels[i].y;
+        plotPixel(x, y, s->pixels[i].c);
     }
 }
 

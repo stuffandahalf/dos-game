@@ -1,8 +1,7 @@
-;bits 32
-global _getScancode
+global _getKey
 
 section .text
-_getScancode:
+_getKey:
     mov ah, 0x00
     int 0x16
     ret
