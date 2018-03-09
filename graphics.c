@@ -2,15 +2,6 @@
 
 extern byte *VGA;
 
-/*void setVideoMode(byte mode)
-{
-    union REGS regs;
-    
-    regs.h.ah = 0x00;
-    regs.h.al = mode;
-    int86(0x10, &regs, &regs);
-}*/
-
 void plotPixel(int x, int y, byte colour)
 {
     VGA[y*SCREEN_WIDTH+x] = colour;

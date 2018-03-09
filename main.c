@@ -12,7 +12,9 @@ int main(int argc, char **argv)
 {
 	setVideoMode(VGA_256_COLOR_MODE);
     VGA+=__djgpp_conventional_base;
-    fillScreen(Cyan);
+    //fillScreen(Cyan);
+    //plotPixel(160, 100, 224);
+    fillScreen(0x37);
     
     byte c = getKey();
     setVideoMode(TEXT_MODE);
