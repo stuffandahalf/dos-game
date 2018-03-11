@@ -37,7 +37,7 @@ void colour_test_16()
     int i, j, x, y, colour;
     
     sprite_t **sprites = calloc(MAX_SPRITES_Y, sizeof(sprite_t *));
-    for(i = 0; i < max_sprites_y; i++)
+    for(i = 0; i < MAX_SPRITES_Y; i++)
     {
         sprites[i] = calloc(MAX_SPRITES_X, sizeof(sprite_t));
     }
