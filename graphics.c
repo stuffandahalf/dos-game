@@ -34,9 +34,6 @@ void free_sprite(sprite_t *s)
 
 void colour_test_16()
 {
-    
-    int max_sprites_x = SCREEN_WIDTH/SPRITE_DIM;
-    int max_sprites_y = SCREEN_HEIGHT/SPRITE_DIM;
     int i, j, x, y, colour;
     
     sprite_t **sprites = calloc(MAX_SPRITES_Y, sizeof(sprite_t *));
