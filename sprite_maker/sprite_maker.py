@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk as gtk
+#import gi
+#gi.require_version('Gtk', '3.0')
+#from gi.repository import Gtk as gtk
+import gtk
 
 def MAIN_WIDTH(): return 800
 def MAIN_HEIGHT(): return 800
@@ -31,6 +32,19 @@ class Pixel_Button(gtk.Button):
     def __init__(self):
         super(Pixel_Button, self).__init__()
         self.connect('clicked', self.open_editor, None)
+        
+        #color_map = self.get_colormap()
+        #color = map.alloc_color("red")
+        #color = map.alloc(101010)
+        #color = gtk.gdk.color_from_hsv(0.5, 1, 0x101010)
+        #c = [0x41, 0x00, 0xFF]
+        c = [0xFF, 0xFF, 0x55]
+        mc = list(map(lambda v: v // 0xFF * 65535, c))
+        
+        color = gtk.gdk.Color(mc[0], mc[1], mc[2], 1)
+        style = self.get_style().copy()
+        style.bg[gtk.STATE_NORMAL] = color
+        self.set_style(style)
         
         self.colour = None
         

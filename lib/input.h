@@ -1,8 +1,8 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-typedef unsigned short word;
+typedef unsigned char byte;
 
-extern word getKey();
+extern byte get_key();
 
 #endif

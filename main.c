@@ -1,23 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <dos.h>
+//#include <dos.h>
 #include <sys/nearptr.h>
+
 #include "lib/graphics.h"
 #include "lib/input.h"
 
 byte *VGA = (byte *)0xA0000;
-word *my_clock = (word *)0x046C;
+//word *my_clock = (word *)0x046C;
 
 int main(int argc, char **argv)
 {
-	setVideoMode(VGA_256_COLOR_MODE);
+	set_video_mode(VGA_256_COLOR_MODE);
     VGA+=__djgpp_conventional_base;
-    //fillScreen(Cyan);
-    //plotPixel(160, 100, 224);
-    fillScreen(0x37);
     
-    byte c = getKey();
-    setVideoMode(TEXT_MODE);
+    colour_test_16();
+    
+    byte c;
+    do
+    {
+        c = get_key();
+    } while(c != 0x1);
+    set_video_mode(TEXT_MODE);
+    
     printf("0x%X\n", c);
 	return 0;
 }
+

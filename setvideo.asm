@@ -1,7 +1,7 @@
-global _setVideoMode
+global _set_video_mode
 
 section .text
-_setVideoMode:
+_set_video_mode:
     push ebp
     mov ebp, esp
     mov ah, 0x00
